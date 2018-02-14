@@ -22,6 +22,8 @@ RUN yum makecache fast \
            gcc-c++\
            vim-enhanced \
            git \
+           json-c \
+           json-c-devel \
            make \
            munge \
            munge-devel \
