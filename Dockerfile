@@ -69,6 +69,8 @@ RUN set -x \
     && install -D -m644 etc/slurm.epilog.clean /etc/slurm/slurm.epilog.clean \
     && install -D -m644 etc/slurmdbd.conf.example /etc/slurm/slurmdbd.conf.example \
     && install -D -m644 contribs/slurm_completion_help/slurm_completion.sh /etc/profile.d/slurm_completion.sh \
+    && install -D -m755 src/plugins/burst_buffer/cray/dw_wlm_cli /opt/cray/dw_wlm/default/bin/dw_wlm_cli \
+    && install -D -m755 src/plugins/burst_buffer/cray/dwstat /opt/cray/dws/default/bin/dwstat \
     && cd \
     && rm -rf /usr/local/src/slurm \
     && mkdir /etc/sysconfig/slurm \
@@ -92,6 +94,7 @@ RUN set -x \
 
 COPY slurm.conf /etc/slurm/slurm.conf
 COPY slurmdbd.conf /etc/slurm/slurmdbd.conf
+COPY burst_buffer.conf /etc/slurm/burst_buffer.conf
 
 COPY docker-entrypoint.sh /usr/local/bin/docker-entrypoint.sh
 ENTRYPOINT ["/usr/local/bin/docker-entrypoint.sh"]
